@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>テストメール送信</title>
+</head>
+
+<body>
+    <h1>テストメール送信フォーム</h1>
+    <p>
+        このページはfetchを利用してmailer.phpにアクセスしてメールを送信するサンプルです。mailer.phpは同じディレクトリにあるconfig.phpで設定を読み込みます。githubにはconfig.phpをアップロードしないようにしてください。
+    </p>
+
+    <input placeholder="送信者名" type="text" id="senderName" name="senderName"><br><br>
+
+    <textarea id="recipientAddresses" name="recipientAddresses" rows="4" cols="50"
+        placeholder="受信アドレス（複数のアドレスはカンマで区切ってください）"></textarea><br>
+
+    <input type="text" placeholder="件名" id="subject" name="subject" required><br>
+
+    <textarea placeholder="本文" id="message" name="message" rows="10" cols="50" required></textarea><br>
+
+    <button type="button" onclick="sendMail()">送信</button>
+
+
+    <div id="result"></div>
+
+    <script src="SMTPSender.js"></script>
+    <script>
+        async function sendMail() {
+            const s = new SMTPSender();
+            const ret = await s.send(
+                document.querySelector('#senderName').value,
+                document.querySelector('#recipientAddresses').value,
+                document.querySelector('#subject').value,
+                document.querySelector('#message').value,
+                'SMTPSender.php'
+            );
+            alert(ret);
+        }
+
+    </script>
+
+</body>
+
+</html>
