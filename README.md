@@ -13,6 +13,7 @@ git clone https://github.com/PHPMailer/PHPMailer.git
 ```
 
 SMTPMailer uses only PHPMailer/src directory. So, you can remove other files and directories.
+
 ```bash
 find PHPMailer -mindepth 1 ! -path "PHPMailer/src*" -exec rm -rf {} +
 ```
@@ -34,6 +35,9 @@ $TEST_RECIEVE_MAIL = 'your_address@for.test.com'; // uses sample.php just for a 
 ?>
 ```
 
-4. Send an email on sample.html or sample.php
+4. Send an email on sample.html or sample.php on your local server.
+```bash
+php -S localhost:8000
+```
 
 sample.html is a template for inquiries. For other uses, please refer to sample.php.
