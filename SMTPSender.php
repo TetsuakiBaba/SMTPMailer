@@ -65,9 +65,9 @@ try {
     $mail->Subject = $subject;
     $mail->Body    = $message;
 
-    // 受信者を追加
+    // 受信者をBCCに追加
     foreach ($recipientAddresses as $address) {
-        $mail->addAddress($address);
+        $mail->addBCC($address);
     }
 
     // メール送信
